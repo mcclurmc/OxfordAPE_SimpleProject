@@ -57,12 +57,15 @@
     </target>
 
     <target name="run-unit-tests" depends="compile-tests">
-        <junit printsummary="yes">
+        <junit printsummary="yes"
+               errorProperty="test.failed" failureProperty="test.failed">
             <classpath refid="classpath"/>
             <formatter type="brief" usefile="false"/>
             <batchtest fork="yes" todir="${unit.test.report.dir}">
                 <fileset dir="unit-test/" includes="**/*Test.java"/>
             </batchtest>
         </junit>
+        <fail message="Unit tests failed. Check log and/or reports."
+              if="test.failed"/>
     </target>
 </project>
