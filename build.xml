@@ -28,7 +28,8 @@
     <target name="compile" depends="prepare">
         <javac srcdir="${src.dir}"
                destdir="${build.prod.dir}"
-               classpathref="classpath"/>
+               classpathref="classpath"
+               includeantruntime="false"/>
     </target>
 
     <target name="jar" depends="compile">
@@ -50,10 +51,12 @@
     <target name="compile-tests" depends="compile">
         <javac srcdir="${unit.test.dir}"
                destdir="${build.test.dir}"
-               classpathref="classpath"/>
+               classpathref="classpath"
+               includeantruntime="false"/>
         <javac srcdir="${system.test.dir}"
                destdir="${build.test.dir}"
-               classpathref="classpath"/>
+               classpathref="classpath"
+               includeantruntime="false"/>
     </target>
 
     <property name="test.report.dir" value="${build.dir}/junitreport"/>
