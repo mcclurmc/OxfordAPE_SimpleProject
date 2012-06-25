@@ -72,7 +72,7 @@
         <junit printsummary="yes"
                errorProperty="test.failed" failureProperty="test.failed">
             <classpath refid="classpath"/>
-            <formatter type="xml" usefile="false"/>
+            <formatter type="xml"/>
             <batchtest fork="yes" todir="${unit.test.report.dir}">
                 <fileset dir="unit-test/" includes="**/*Test.java"/>
             </batchtest>
@@ -94,7 +94,7 @@
         <junit printsummary="yes"
                errorProperty="test.failed" failureProperty="test.failed">
             <classpath refid="classpath"/>
-            <formatter type="xml" usefile="false"/>
+            <formatter type="xml"/>
             <batchtest fork="yes" todir="${system.test.report.dir}">
                 <fileset dir="system-test/" includes="**/*Test.java"/>
             </batchtest>
