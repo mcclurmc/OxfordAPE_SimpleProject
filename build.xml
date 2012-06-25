@@ -24,4 +24,10 @@
         <mkdir dir="${system.test.dir}"/>
         <mkdir dir="${lib.dir}"/>
     </target>
+
+    <target name="compile" depends="prepare">
+        <javac srcdir="${src.dir}"
+               destdir="${build.prod.dir}"
+               classpathref="classpath"/>
+    </target>
 </project>
