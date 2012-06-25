@@ -62,6 +62,8 @@
     <property name="test.report.dir" value="${build.dir}/junitreport"/>
     <property name="unit.test.report.dir"
               value="${build.dir}/junitreport/unit-test/"/>
+    <property name="system.test.report.dir"
+              value="${build.dir}/junitreport/system-test/"/>
 
     <target name="run-unit-tests" depends="compile-tests">
         <mkdir dir="${test.report.dir}"/>
@@ -85,5 +87,26 @@
               if="test.failed"/>
     </target>
 
+    <target name="run-system-tests" depends="compile-tests">
+        <mkdir dir="${test.report.dir}"/>
+        <mkdir dir="${system.test.report.dir}"/>
+
+        <junit printsummary="yes"
+               errorProperty="test.failed" failureProperty="test.failed">
+            <classpath refid="classpath"/>
+            <formatter type="xml" usefile="false"/>
+            <batchtest fork="yes" todir="${system.test.report.dir}">
+                <fileset dir="system-test/" includes="**/*Test.java"/>
+            </batchtest>
+        </junit>
+
+        <junitreport todir="${system.test.report.dir}">
+            <fileset dir="${system.test.report.dir}" includes="TEST-*.xml"/>
+            <report todir="${system.test.report.dir}"/>
+        </junitreport>
+
+        <fail message="System tests failed. Check log and/or reports."
+              if="test.failed"/>
+    </target>
 
 </project>
