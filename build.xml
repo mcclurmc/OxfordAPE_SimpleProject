@@ -10,7 +10,7 @@
 
     <path id="classpath">
         <pathelement location="${build.prod.dir}"/>
-        <pathelement location="${build.prod.dir}"/>
+        <pathelement location="${build.test.dir}"/>
         <fileset dir="${lib.dir}" includes="*.jar"/>
     </path>
 
